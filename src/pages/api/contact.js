@@ -8,7 +8,7 @@ export default async function handler(req, res) {
         service: 'Gmail',
         auth: {
           user: 'info@zawda.me',
-          pass: 'Z4wd4_2024#',
+          pass: '',
         },
       });
 
