@@ -1,0 +1,88 @@
+.connectWrapper{
+    background-color: var(--main-color);
+    padding: var(--main-padding);
+    padding-top: 150px;
+    padding-bottom: 150px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content:space-between;
+    &.arabic{
+        flex-direction: row-reverse;
+        @media screen and (max-width:700px){
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        form {
+            margin-left: 0;
+         
+            input,textarea{
+                text-align: right;
+                font-family: 'arabic-regular';
+                width: 100%;
+            }
+        }
+    }
+    @media screen and (max-width:700px) {
+        flex-direction: column;
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    h1,p{
+        color: white;
+    }
+    form{
+        button{
+            cursor: pointer;
+        }
+        min-width: 50%;
+        display: flex;
+        flex-direction: column;
+        @media screen and (max-width:700px) {
+            margin-left: 0;
+            width: 100%;
+            margin-top: 50px;
+        }
+        input,textarea{
+            margin-bottom: 20px;
+            &:focus{
+                outline: none;
+            }
+            background-color: transparent;
+            border: 1px solid white;
+            padding: 10px;
+            color: white;
+            border-radius: 5px;
+            max-width: 100%;
+            font-family: 'inter-regular';
+            &::placeholder{
+                color: white;
+            }
+        }
+        textarea{
+            resize: none;
+            width: 100%;
+        }
+        div{
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            @media screen and (max-width:700px) {
+                flex-direction: column;
+            }
+            input{
+                flex: 1;
+                &:first-child{
+                    margin-right: 20px;
+                    @media screen and (max-width:700px) {
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+        .errorMessage,.successMessage{
+            color: white;
+            margin-top: 10px;
+        }
+    }
+}

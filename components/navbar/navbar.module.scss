@@ -1,0 +1,287 @@
+.nav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--main-padding);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: var(--lg-gray);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 6;
+    &.arabic{
+      flex-direction: row-reverse;
+      .lfBlock{
+        flex-direction: row-reverse;
+        .langHolder{
+          margin-right:30px ;
+          margin-left: auto;
+        }
+      }
+      .rgBlock{
+        display: flex;
+        flex-direction: row-reverse;
+      }
+      .dropdown{
+        span{
+          display: flex;
+          flex-direction: row-reverse;
+          img{
+            margin-right: 5px;
+          }
+        }
+        .dropdownContent{
+          a{
+            text-align: right;
+          }
+        }
+      }
+    }
+    @media screen and (max-width:700px) {
+      height: 80px;
+    }
+    .lfBlock{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .logo{
+          @media screen and (max-width:700px) {
+            width: 30%;
+            img{
+              width: 100%;
+            }
+          }
+        }
+        .langHolder{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-left: 30px;
+            a{
+                font-family: 'inter-semi-bold';
+                &:lang(ar){
+                  font-family: 'arabic-semi-bold';
+                }
+                font-size: 18px;
+                line-height: 28px;
+                color: black;
+                opacity: 0.4;
+                &:hover{
+                opacity: 1;
+                }
+                &.active{
+                  opacity: 1;
+                }
+            }
+            .separator{
+                width: 1px;
+                height: 20px;
+                background-color: black;
+                margin: 0px 5px;
+                display: block;
+                
+            }
+        }
+    }
+}
+.rgBlock {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Adjust this for spacing between the dropdowns */
+    @media screen and (max-width:700px) {
+      display: none !important;
+    }
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+   margin-right: 20px;
+    cursor: pointer;
+    .dropdownArrow {
+        transition: transform 0.3s; /* This is for a smooth rotation */
+        vertical-align: middle; /* Aligns the SVG with the text */
+      }
+    span{
+        font-family: 'inter-semi-bold';
+        &:lang(ar){
+          font-family: 'arabic-semi-bold';
+        }
+        font-size: 18px;
+        line-height: 28px;
+    }
+  }
+  .dropdown:hover .dropdownArrow {
+    transform: rotate(180deg); /* Rotate arrow to point upwards */
+  }
+  .dropdownContent {
+    display: block;
+    visibility: hidden;
+    position: absolute;
+    background-color: white;
+    width: auto;
+    //box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 4px;
+    left: 50%;
+    margin-top: 5px;
+    padding: 0 10px;
+    opacity: 0; // Initial opacity
+    transform: translate(-50%,10px); // Slightly move it down
+    transition: 
+        transform 0.3s ease, 
+        opacity 0.3s ease, // No delay on the opacity transition
+        visibility 0s linear 0.3s;
+    
+ }
+  
+  .dropdownContent a {
+    color: black;
+    padding: 7px 16px;
+    text-decoration: none;
+    display: block;
+    font-family: 'inter-semi-bold';
+    &:lang(ar){
+      font-family: 'arabic-semi-bold';
+    }
+    color: var(--dk-gray);
+    font-size: 14px;
+    border-bottom: 1px solid var(--lg-gray);
+    white-space: nowrap;
+    &:hover{
+      color:black ;
+    }
+  }
+  
+  .dropdown:hover .dropdownContent {
+    display: block;
+    opacity: 1; // Full opacity on hover
+    transform: translate(-50%,0); // Move it to its original position
+    pointer-events: auto; // Allow interactions when it's visible
+    visibility: visible;
+    transition: 
+    transform 0.3s ease, 
+    opacity 0.3s ease, // No delay on hover
+    visibility 0s linear 0s; 
+  }
+  .phoneBlock {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 20px;
+    height: 15px;
+    cursor: pointer;
+    @media screen and (max-width:700px) {
+      display: flex;
+    }
+    .line {
+        width: 100%;
+        height: 3px;
+        background-color: #000; // or any color you prefer
+        transition: all 0.3s ease;
+        position: relative;
+        border-radius: 4px;
+    }
+
+    .line1Open {
+        transform: rotate(45deg);
+        top: 3.8px;
+    }
+
+    .line2Open {
+        opacity: 0;
+    }
+
+    .line3Open {
+        transform: rotate(-45deg);
+        top: -9px;
+    }
+}
+.phoneNav{
+  display: none;
+  @media screen and (max-width:700px) {
+    display: flex;
+    transform: translateY(-100%); // This will position it off the screen initially
+    transition: transform 0.5s ease-in;
+    flex-direction: column;
+    left: 0;
+    right: 0;
+    padding: 0 5%;
+    padding-bottom: 50px;
+    position: fixed;
+    background-color: var(--lg-gray);
+    top: 80px;
+    height: calc(100vh - 80px);
+    width: 100%;
+    z-index: 5;
+    overflow: auto;
+    &.arabic{
+      .phoneDropDown{
+        span{
+          flex-direction: row-reverse;
+        }
+        div{
+          a{
+            text-align: right;
+          }
+        }
+      }
+    }
+    &.open {
+      transform: translateY(0); // This will slide it into view
+  }
+  }
+  .phoneDropDown{
+    display: flex;
+    flex-direction: column;
+    border-top: 0.5px solid var(--dk-gray);
+    padding: 10px 0;
+    span{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 8rem;
+      font-family: 'inter-semi-bold';
+      &:lang(ar){
+        font-family: 'arabic-semi-bold';
+      }
+      margin: 5px 0;
+     
+    }
+    .arrow{
+      transform: rotate(90deg);
+     }
+    .rotated {
+      transform: rotate(-90deg); // Rotate the arrow by 90 degrees
+      transition: transform 0.3s ease-in-out;
+  }
+  
+    div{
+      display: flex;
+      flex-direction: column;
+      a{
+        font-size: 6rem;
+        font-family: 'inter-semi-bold';
+        &:lang(ar){
+          font-family: 'arabic-semi-bold';
+        }
+        color: var(--dk-gray);
+        margin: 5px 0;
+      }
+    }
+  }
+  .phoneDropDownLinks {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+   
+    &.open {
+        max-height: 300px; // Adjust this value based on your content's height
+    }
+}
+}
+
+

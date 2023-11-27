@@ -1,0 +1,49 @@
+.aboutWrapper{
+    height: 100vh;
+    background-color: var(--lg-gray);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--main-padding);
+    position: relative;
+    overflow: hidden;
+    min-height: 600px;
+   
+    div{
+        max-width: 60%;
+        &:lang(ar){
+            p{
+                text-align: left;
+            }
+        }
+        @media screen and (max-width:700px) {
+            max-width: none;
+        }
+    }
+    @media screen and (max-width:700px) {
+        min-height: auto;
+        padding: 150px 10%;
+        height: auto;
+    }
+    .banner{
+        right: -15px;
+        top: 5%;
+        position: absolute;
+        height: 100%;
+        &.bannerPhone{
+            display: none;
+        }
+        @media screen and (max-width:700px) {
+            display: none;
+           
+            &.bannerPhone{
+                display: flex;
+                bottom: 0;
+                top: auto;
+            right: 50%;
+            transform: translate(50%,50%) ;
+            height: auto;
+            }
+        }
+    }
+}

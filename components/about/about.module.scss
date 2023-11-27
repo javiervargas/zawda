@@ -1,0 +1,103 @@
+.aboutWrapper{
+    padding: var(--main-padding);
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    width: 100%;
+    .contentWrapper{
+        margin: 100px 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+       .textHolder{
+        max-width: 40%;
+       p{
+        &:lang(ar){
+           direction: ltr;
+        }
+       }
+        @media screen and (max-width:700px){
+          max-width: 100%;
+        }
+       }
+        @media screen and (max-width:700px) {
+          flex-direction: column;
+          align-items: flex-end;
+          &:nth-child(1){
+            flex-direction: column-reverse;
+            align-items: flex-start;
+          }
+        }
+        .squareContainer{
+           
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            @media screen and (max-width:700px) {
+             
+              order: 0;
+              justify-content: center;
+              width: 100%;
+            }
+          
+            .rightImg{
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%,-50%);
+                z-index: 1;
+            }
+            .leftImg{
+                position: absolute;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%,-50%);
+               z-index: 1;
+            }
+            .leftImg, .rightImg,img {
+                transition: transform 0.8s ease;
+                width: 30vw;
+                @media screen and (max-width:700px) {
+                  width: 60%;
+                }
+              }
+              
+            //   .leftImg {
+            //     transform: translateX(0); // starts from the original position
+            //   }
+              
+            //   .rightImg {
+            //     transform: translateX(0); // starts from the original position
+            //   }
+              
+              .leftImg.slide {
+                transform: translate(-75%,-50%); // adjust the distance as per your requirement
+                @media screen and (max-width:700px) {
+                    transform: translate(12%,-50%);
+                }
+              }
+              
+              .rightImg.slide {
+                transform: translate(-97px,-50%); // adjust the distance as per your requirement
+                @media screen and (max-width:700px) {
+                    transform: translate(-55px,-50%);
+                }
+              }
+              .leftImg.slide1 {
+                transform: translate(-82%,-50%); // adjust the distance as per your requirement
+              }
+              .rightImg.slide2 {
+                transform: translate(-115px,-50%); // adjust the distance as per your requirement
+                @media screen and (max-width:700px) {
+                    transform: translate(-105%,-50%);
+                }
+              }
+        }
+    }
+}
